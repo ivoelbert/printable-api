@@ -9,7 +9,7 @@ export const listModels = async (req: Request, res: Response) => {
     const files: Dirent[] = await promiseFs.readdir('public', { withFileTypes: true });
 
     const listData: PrintableData = {
-        printables: files.filter((dirent: Dirent) => dirent.isDirectory()).map((dirent: Dirent) => `${dirent.name}.gltf`),
+        printables: files.filter((dirent: Dirent) => dirent.isDirectory()).map((dirent: Dirent) => `${dirent.name}/${dirent.name}.gltf`),
     };
 
     res.status(200).send(listData);
